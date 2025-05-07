@@ -61,7 +61,7 @@ func GetAllTasks(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateTask(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Context-Type", "application/x-wwww-form-url-encoded")
+	w.Header().Set("Context-Type", "application/x-www-form-url-encoded")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST") // send our body of data as a request with POST http verb
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -72,6 +72,14 @@ func CreateTask(w http.ResponseWriter, r *http.Request) {
 }
 
 func TaskComplete(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Context-Type", "application/x-www-form-url-encoded")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "PUT")
+	w.Header().Set("Access-Control-Allow-Hedaers", "Content-Type")
+
+	params := mux.Vars(r)
+	TaskComplete(params["id"])
+	json.NewEncoder(w).Encode(params["id"])
 
 }
 
