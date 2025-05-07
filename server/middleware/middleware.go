@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/erabxes/golang-react-todo/server/models"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
@@ -55,12 +56,19 @@ func GetAllTasks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Context-Type", "application/x-www-form-url-encoded")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	payload := getAllTasks()
-	err := json.NewEncoder(w).Encode(payload)
+	err := json.NewEncoder(w).Encode(payload) // to encode our payload into our responsewriter w
 
 }
 
 func CreateTask(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Context-Type", "application/x-wwww-form-url-encoded")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST") // send our body of data as a request with POST http verb
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	var task models.ToDoList
+	json.NewDecoder(r.Body).Decode(&task) // decode request into this struct task
+	insertOneTask(task)
+	json.NewEncoder(w).Encode(task)
 }
 
 func TaskComplete(w http.ResponseWriter, r *http.Request) {
