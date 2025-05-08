@@ -5,7 +5,7 @@ import (
 )
 
 type ToDoList struct {
-	ID     primitive.ObjectId `json:"id, omitempty" bson:"id, omitempty"`
+	ID     primitive.ObjectID `json:"id,omitempty" bson:"id, omitempty"`
 	Task   string             `jsom:"task, omitempty"`
-	Status bool               `json:"status, omitempty"`
+	Status bool               `json:"status,omitempty"`
 }
