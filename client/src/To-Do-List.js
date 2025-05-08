@@ -24,7 +24,30 @@ class ToDoList extends Component {
         });
     };
 
-    onSubmit
+    onSubmit = () => {
+        let { task } = this.state;
+
+        if (task) {
+            axios.post(getendpoint + "/api/task",
+                { task, },
+                {
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                }
+
+            ).then((res) => {
+                this.getTask();
+                this.setState({
+                    task: "",
+                });
+                console.log(res)
+            });
+
+        }
+    };
+
+
 
     getTask = () => {
         axios.get(endpoint + "/api/task").then((res) => {
