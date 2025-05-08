@@ -78,7 +78,16 @@ class ToDoList extends Component {
         });
     };
 
-    updateTask
+    updateTask = (id) => {
+        axios.put(endpoint + "/api/task" + id, {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+        }).then((res) => {
+            console.log(res);
+            this.getTask();
+        })
+    }
 
     undoTask
 
