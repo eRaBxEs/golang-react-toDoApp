@@ -115,14 +115,47 @@ func DeleteAllTasks(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(count)
 }
 
+func getAllTasks() []primitive.M {
+	cur, err := collection.Find(context.Background(), bson.D{{}})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var results []primitive.M
+	for cur.Next(context.Background()) {
+		var result bson.M
+		e := cur.Decode(&result)
+		if e != nil {
+			log.Fatal(e)
+		}
+
+		results = append(results, result)
+	}
+
+	if err := cur.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	cur.Close(context.Background())
+	return results
+}
+
 func TaskComplete(task string) {
 
 }
 
-func getAllTasks() {
+func insertOneTask(task models.ToDoList) {
 
 }
 
-func insertOneTask(task models.ToDoList) {
+func UndoTask() {
+
+}
+
+func deleteOneTask() {
+
+}
+
+func deleteAllTasks() {
 
 }
