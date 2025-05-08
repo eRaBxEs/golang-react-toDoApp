@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"golang-react-todoapp/router"
 	"log"
 	"net/http"
+
+	"github.com/erabxes/golang-react-todo/router"
 )
 
 func main() {
