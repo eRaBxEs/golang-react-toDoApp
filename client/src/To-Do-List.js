@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Card, Header, Form, Input, Icon } from "semantic-ui-react";
 
-let endpoint = "https://localhost:9000"
+let endpoint = "http://localhost:9000"
 
 class ToDoList extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ToDoList extends Component {
         };
     }
 
-    ComponentDidMount() {
+    componentDidMount() {
         this.getTask();
     }
 
