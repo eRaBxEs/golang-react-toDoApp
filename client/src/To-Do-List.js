@@ -86,10 +86,19 @@ class ToDoList extends Component {
         }).then((res) => {
             console.log(res);
             this.getTask();
-        })
-    }
+        });
+    };
 
-    undoTask
+    undoTask = (id) => {
+        axios.put(endpoint + "/api/undoTask" + id, {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+        }).then((res) => {
+            console.log(res);
+            this.getTask();
+        });
+    };
 
     deleteTask
 
