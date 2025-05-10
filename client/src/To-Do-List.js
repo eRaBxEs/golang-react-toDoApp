@@ -28,7 +28,7 @@ class ToDoList extends Component {
         let { task } = this.state;
 
         if (task) {
-            axios.post(getendpoint + "/api/task",
+            axios.post(endpoint + "/api/task",
                 { task, },
                 {
                     headers: {
@@ -42,7 +42,10 @@ class ToDoList extends Component {
                     task: "",
                 });
                 console.log(res)
-            });
+            })
+                .catch(error => {
+                    console.error('API Error:', error);
+                });
 
         }
     };
@@ -98,7 +101,10 @@ class ToDoList extends Component {
                     items: [],
                 });
             }
-        });
+        })
+            .catch(error => {
+                console.error('API Error:', error);
+            });
     };
 
     updateTask = (id) => {
@@ -109,7 +115,10 @@ class ToDoList extends Component {
         }).then((res) => {
             console.log(res);
             this.getTask();
-        });
+        })
+            .catch(error => {
+                console.error('API Error:', error);
+            });
     };
 
     undoTask = (id) => {
@@ -120,7 +129,10 @@ class ToDoList extends Component {
         }).then((res) => {
             console.log(res);
             this.getTask();
-        });
+        })
+            .catch(error => {
+                console.error('API Error:', error);
+            });
     };
 
     deleteTask = (id) => {
@@ -131,7 +143,10 @@ class ToDoList extends Component {
         }).then((res) => {
             console.log(res);
             this.getTask();
-        });
+        })
+            .catch(error => {
+                console.error('API Error:', error);
+            });
     };
 
 
